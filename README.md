@@ -2,4 +2,4 @@
 
 ## Explicación
 
-![Lifecycle](https://youtu.be/_Tbrop6kRyI)
+[Lifecycle Components](https://youtu.be/_Tbrop6kRyI)
