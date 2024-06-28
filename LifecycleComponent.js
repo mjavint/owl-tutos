@@ -2,9 +2,12 @@ import {
   Component,
   useState,
   onWillStart,
+  onWillRender,
+  onRendered,
   onWillMounted,
-  onWillPatch,
   onWillUpdateProps,
+  onWillPatch,
+  onPatched,
   onWillUnmounted,
   onWillDestroy,
   onError,
@@ -16,6 +19,14 @@ class LifecycleComponent extends Component {
 
     onWillStart(async () => {
       this.data = await fetchData();
+    });
+
+    onWillRender(() => {
+      console.log('Component will render');
+    });
+
+    onRendered(() => {
+      console.log('Component has been rendered');
     });
 
     onWillMounted(() => {
@@ -32,6 +43,10 @@ class LifecycleComponent extends Component {
       this.scrollState = this.getScrollState();
     });
 
+    onPatched(() => {
+      this.scrollState = this.getScrollState();
+    });
+
     onWillUnmounted(() => {
       this.el
         .querySelector('button')
@@ -43,7 +58,7 @@ class LifecycleComponent extends Component {
     });
 
     onError((error) => {
-      console.error('An error ocurred: ', error);
+      console.error('An error occurred: ', error);
     });
   }
 }
